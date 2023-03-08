@@ -6,6 +6,7 @@
 
     <servlet>
         <servlet-name>bartwal</servlet-name>
+        <servlet-class>com.bartwal.Controller.PageController</servlet-class>
     </servlet>
 
     <servlet-mapping>
