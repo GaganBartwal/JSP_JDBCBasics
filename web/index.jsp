@@ -35,13 +35,13 @@
 <body>
 <h2>Sign Up</h2>
 <p>Please Fill Out the Required Information.</p>
-
+<form action="/HomePage" method="post">
     <fieldset class="fil_1">
         <input type="email" name="email" required placeholder="Enter Your Email:"/>
         <input type="password" name="password" placeholder="Enter Your Password:"/>
         <button type="login" name="login">login</button>
     </fieldset>
-
+</form>
 <h2>Sign Up</h2>
 <p>Please Fill Out the Required Information.</p>
 <form action="#">

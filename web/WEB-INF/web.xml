@@ -5,13 +5,23 @@
          version="4.0">
 
     <servlet>
-        <servlet-name>bartwal</servlet-name>
+        <servlet-name>Login</servlet-name>
         <servlet-class>com.bartwal.Controller.PageController</servlet-class>
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>bartwal</servlet-name>
+        <servlet-name>Login</servlet-name>
         <url-pattern>/HomePage</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>SignUp</servlet-name>
+        <servlet-class>com.bartwal.Controller.PageController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>SignUp</servlet-name>
+        <url-pattern>/WelcomePage</url-pattern>
     </servlet-mapping>
 
     <context-param>

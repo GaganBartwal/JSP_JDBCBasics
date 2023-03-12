@@ -9,19 +9,16 @@ import java.io.IOException;
 
 public class PageController extends HttpServlet {
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
-        dispatcher.forward(request, response);
+        String email = request.getParameter("email").toString();
+        String password = request.getParameter("password").toString();
 
-    }
-
-    /*public static int LoginSuccessfullPage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+        System.out.println("email : " +email +" : password : " +password);
 
         RequestDispatcher dispatcher = request.getRequestDispatcher("HomePage.jsp");
         dispatcher.forward(request, response);
 
-        return 0;
-    }*/
+    }
 
 }
