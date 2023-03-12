@@ -16,11 +16,12 @@ public class PageController extends HttpServlet {
 
     }
 
-    public void LoginSuccessfullPage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+    /*public static int LoginSuccessfullPage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 
         RequestDispatcher dispatcher = request.getRequestDispatcher("HomePage.jsp");
         dispatcher.forward(request, response);
 
-    }
+        return 0;
+    }*/
 
 }

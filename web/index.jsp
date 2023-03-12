@@ -19,9 +19,7 @@
 <script>
     function myFunction() {
 
-        <%--if(document.getElementsByName("login")){--%>
-            <%--<%= PageController%>--%>
-        <%--}--%>
+        <%--<%= PageController.LoginSuccessfullPage(request, response)%>--%>
 
     }
 </script>
@@ -37,15 +35,13 @@
 <body>
 <h2>Sign Up</h2>
 <p>Please Fill Out the Required Information.</p>
-<form action="login">
+
     <fieldset class="fil_1">
         <input type="email" name="email" required placeholder="Enter Your Email:"/>
         <input type="password" name="password" placeholder="Enter Your Password:"/>
-        <button type="login" name="login" onclick="myFunction()">login</button>
+        <button type="login" name="login">login</button>
     </fieldset>
 
-
-</form>
 <h2>Sign Up</h2>
 <p>Please Fill Out the Required Information.</p>
 <form action="#">
