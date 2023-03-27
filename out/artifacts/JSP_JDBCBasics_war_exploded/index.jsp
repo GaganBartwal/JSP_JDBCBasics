@@ -16,13 +16,6 @@
 %>
 
 <html lang="en">
-<script>
-    function myFunction() {
-
-        <%--<%= PageController.LoginSuccessfullPage(request, response)%>--%>
-
-    }
-</script>
 
 <head>
     <meta charset="UTF-8">
@@ -39,7 +32,7 @@
     <fieldset class="fil_1">
         <input type="email" name="email" required placeholder="Enter Your Email:"/>
         <input type="password" name="password" placeholder="Enter Your Password:"/>
-        <button type="login" name="login">login</button>
+        <button type="login">login</button>
     </fieldset>
 </form>
 <h2>Sign Up</h2>
@@ -49,8 +42,7 @@
         <label>Enter Your First Name: <input type="text" name="name" required/></label>
         <label>Enter Your Last Name: <input type="text" name="name" required/></label>
         <label>Enter Your Email: <input type="email" name="email" required/></label>
-        <label>Create a New Password: <input type="password" pattern="[a-z0-5]{8,}"
-                                             required/></label>
+        <label>Create a New Password: <input type="password" pattern="[a-z0-5]{8,}" required/></label>
     </fieldset>
     <fieldset class="fil_2">
         <p class="inline">Please Select Your Gender:</p>
