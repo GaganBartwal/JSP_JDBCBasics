@@ -32,15 +32,30 @@
     <fieldset class="fil_1">
         <input type="email" name="email" required placeholder="Enter Your Email:"/>
         <input type="password" name="password" placeholder="Enter Your Password:"/>
-        <button type="login">login</button>
+        <button type="submit">login</button>
     </fieldset>
 </form>
 <h2>Sign Up</h2>
+
+<%
+    String firstname = request.getParameter("firstname");
+    String lastname = request.getParameter("lastname");
+    String gender = request.getParameter("gender");
+    //Integer age = Integer.parseInt(request.getParameter("age"));
+    String bio = request.getParameter("bio");
+
+    request.setAttribute("firstname", firstname);
+    request.setAttribute("lastname",lastname);
+    request.setAttribute("gender",gender);
+    //request.setAttribute("age",age);
+    request.setAttribute("bio",bio);
+%>
+
 <p>Please Fill Out the Required Information.</p>
-<form action="#">
+<form action="/WelcomePage" method="post">
     <fieldset class="fil_1">
-        <label>Enter Your First Name: <input type="text" name="name" required/></label>
-        <label>Enter Your Last Name: <input type="text" name="name" required/></label>
+        <label>Enter Your First Name: <input type="text" name="firstname" required/></label>
+        <label>Enter Your Last Name: <input type="text" name="lastname" required/></label>
         <label>Enter Your Email: <input type="email" name="email" required/></label>
         <label>Create a New Password: <input type="password" pattern="[a-z0-5]{8,}" required/></label>
     </fieldset>
@@ -54,12 +69,12 @@
     </fieldset>
     <fieldset class="fil_3">
         <label>Upload a profile picture: <input type="file" name="file"/></label>
-        <label>Input your age (years): <input type="number" name="Gender" min="16" max="60"/></label>
+        <label>Input your age (years): <input type="number" name="age" min="16" max="60"/></label>
         <label>We would Like to know about You More:
             <textarea name="bio" rows="3" cols="30" placeholder="I like to make new friends...."></textarea>
         </label>
+        <button type="submit">SignUp</button>
     </fieldset>
-    <button type="submit">Submit</button>
 </form>
 
 </body>

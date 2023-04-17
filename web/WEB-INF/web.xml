@@ -16,7 +16,7 @@
     
     <servlet>
         <servlet-name>SignUp</servlet-name>
-        <servlet-class>com.bartwal.Controller.PageController</servlet-class>
+        <servlet-class>com.bartwal.Controller.SignUpPageController</servlet-class>
     </servlet>
 
     <servlet-mapping>
