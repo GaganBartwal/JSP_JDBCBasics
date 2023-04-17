@@ -43,7 +43,7 @@ public class PageController extends HttpServlet {
             dispatcher.forward(request, response);
         }else{
             RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
-            dispatcher.forward(request, response);
+            dispatcher.include(request, response);
         }
 
     }
