@@ -20,30 +20,20 @@ public class PageController extends HttpServlet {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
 
-        System.out.println("email : " +email +" : password : " +password);
+//        System.out.println("email : " +email +" : password : " +password);
 
         Connection connection = new MySQLDataServices().mySQLConnection();
 
-        LinkedList<UserDataBusinessLogic> userDataList = new UserDAO().getUsersData(connection);
+        String filter = "user_name = ? and user_password = ?";
 
-        System.err.println("userDataList: " +userDataList);
+        Boolean isUser = new UserDAO().getValidated(connection, filter, email, password);
 
-        Boolean isEmailCorrect = null;
-        Boolean isPasswordCorrect = null;
+        System.err.println(email + " : " +isUser);
 
-        for(UserDataBusinessLogic userDataBusinessLogic : userDataList){
-
-            isEmailCorrect = email.equals(userDataBusinessLogic.getUser_name());
-            isPasswordCorrect = password.equals(userDataBusinessLogic.getUser_password());
-
-        }
-
-        if(isEmailCorrect && isPasswordCorrect){
-            RequestDispatcher dispatcher = request.getRequestDispatcher("HomePage.jsp");
-            dispatcher.forward(request, response);
+        if(isUser){
+            response.getWriter().write("success");
         }else{
-            RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
-            dispatcher.include(request, response);
+            response.getWriter().write("error");
         }
 
     }

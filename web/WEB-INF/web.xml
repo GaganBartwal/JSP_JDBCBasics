@@ -11,9 +11,7 @@
 
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
-        <url-pattern>/HomePa
-
-            ge</url-pattern>
+        <url-pattern>/HomePage</url-pattern>
     </servlet-mapping>
     
     <servlet>

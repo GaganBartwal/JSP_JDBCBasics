@@ -36,22 +36,24 @@
 <body>
 <h2>Login</h2>
 <p>Please Fill Out the Required Information.</p>
-<form action="/HomePage" method="post">
+<form id="login-form" method="post">
     <fieldset class="fil_1">
+        <p id="error-message"></p>
         <input type="email" name="email" required placeholder="Enter Your Email:"/>
         <input type="password" name="password" placeholder="Enter Your Password:"/>
-        <button type="submit">login</button>
     </fieldset>
+    <button type="submit">login</button>
 </form>
 
 <h2>Sign Up</h2>
 <p>Please Fill Out the Required Information.</p>
-<form action="/WelcomePage" method="post">
+<form id="sign-up-form" method="post">
     <fieldset class="fil_1">
         <label>Enter Your First Name: <input type="text" name="firstname" required/></label>
         <label>Enter Your Last Name: <input type="text" name="lastname" required/></label>
         <label>Enter Your Email: <input type="email" name="email" required/></label>
-        <label>Create a New Password: <input type="password" pattern="[a-z0-9]{8,}" required/></label>
+        <p id="email-error"></p>
+        <label>Create a New Password: <input type="password" name="password" pattern="[a-z0-9]{8,}" required/></label>
     </fieldset>
     <fieldset class="fil_2">
         <p class="inline">Please Select Your Gender:</p>
@@ -70,6 +72,42 @@
         <button type="submit">SignUp</button>
     </fieldset>
 </form>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#login-form").submit(function (event) {
+            event.preventDefault();
+            $.ajax({
+                url : '/HomePage',
+                type : 'post',
+                data : $(this).serialize(),
+                success : function (response) {
+                    if(response === 'success'){
+                        window.location.href = 'HomePage.jsp';
+                    }else{
+                        $('#error-message').html("Username or Password Incorrect/Not Exists");
+                    }
+                }
+            });
+        });
+        $("#sign-up-form").submit(function (event) {
+           event.preventDefault();
+           $.ajax({
+               url : "/WelcomePage",
+               type : 'post',
+               data : $(this).serialize(),
+               success : function(response){
+                   if(response === 'exists'){
+                       $('#email-error').html("Email already exists");
+                   }else{
+                       window.location.href = 'WelcomePage.jsp';
+                   }
+               }
+           })
+        });
+    });
+</script>
 
 </body>
 
