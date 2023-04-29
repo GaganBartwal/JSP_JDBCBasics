@@ -66,7 +66,6 @@ public class UserDAO {
 
             }
 
-
         }catch(Exception e){
             e.printStackTrace();
         }
@@ -83,20 +82,22 @@ public class UserDAO {
         String query = "SELECT * FROM user_authentication WHERE " +filter;
         System.err.println(query);
 
-        try {
-            PreparedStatement statement = connection.prepareStatement(query);
+        if(filterMail != null && filterPass != null){
+            try {
+                PreparedStatement statement = connection.prepareStatement(query);
 
-            statement.setString(1, filterMail);
-            statement.setString(2, filterPass);
+                statement.setString(1, filterMail);
+                statement.setString(2, filterPass);
 
-            ResultSet resultSet = statement.executeQuery();
+                ResultSet resultSet = statement.executeQuery();
 
-            if(resultSet.next()){
-                isUser = true;
+                if(resultSet.next()){
+                    isUser = true;
+                }
+
+            } catch (SQLException e) {
+                e.printStackTrace();
             }
-
-        } catch (SQLException e) {
-            e.printStackTrace();
         }
 
         return isUser;
@@ -106,6 +107,10 @@ public class UserDAO {
     public Boolean getUserExists(Connection connection, String filter, String filterData){
 
         Boolean isUserExist = false;
+
+        UserDataBusinessLogic userBL = new UserDataBusinessLogic();
+
+        String email = userBL.getUser_name();
 
         String query = "SELECT user_name FROM user_authentication WHERE " +filter;
 
@@ -123,7 +128,6 @@ public class UserDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
 
         return isUserExist;
 

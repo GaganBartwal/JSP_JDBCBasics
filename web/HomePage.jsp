@@ -18,7 +18,7 @@
         <a href="#">Home</a>
         <a href="#">Profile</a>
         <a href="#">Settings</a>
-        <a href="#">Logout</a>
+        <a href="#" id="activity-Inactive">Logout</a>
     </nav>
     <form>
         <input type="text" placeholder="Search...">

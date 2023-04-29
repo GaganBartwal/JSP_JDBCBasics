@@ -9,7 +9,9 @@
   Time: 11:58 PM
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java"
+session="true" %>
+
 <%
 
     Connection connection = new MySQLDataServices().mySQLConnection();
@@ -33,7 +35,7 @@
     <title>Sign In or Sign Up</title>
 </head>
 
-<body>
+<body onload="sessionOnLoad();">
 <h2>Login</h2>
 <p>Please Fill Out the Required Information.</p>
 <form id="login-form" method="post">
@@ -75,6 +77,27 @@
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
+    function sessionOnLoad(){
+        console.log("onload here");
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', '/HomePage', true);
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        xhr.onreadystatechange = function () {
+            console.log("stateChange", xhr.readyState);
+            var response = xhr.responseText;
+            // console.log(response);
+            if(xhr.readyState === 4 && xhr.status === 200 && response === "success"){
+                window.location.href = 'HomePage.jsp';
+            }else{
+                console.log("error here: ", response);
+            }
+        };
+        xhr.onerror = function() {
+            alert("Something went Wrong check Console!!!!");
+            console.error('Error: Request failed: ', xhr);
+        };
+        xhr.send();
+    }
     $(document).ready(function () {
         $("#login-form").submit(function (event) {
             event.preventDefault();
@@ -99,7 +122,8 @@
                data : $(this).serialize(),
                success : function(response){
                    if(response === 'exists'){
-                       $('#email-error').html("Email already exists");
+                       $('#email-error').html("Email already exists.");
+                       alert("Email error");
                    }else{
                        window.location.href = 'WelcomePage.jsp';
                    }

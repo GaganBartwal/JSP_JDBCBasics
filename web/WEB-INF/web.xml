@@ -4,6 +4,16 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
 
+    <filter>
+        <filter-name>SessionFilter</filter-name>
+        <filter-class>com.bartwal.Controller.SessionFilterController</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>SessionFilter</filter-name>
+        <url-pattern>/HomePage</url-pattern>
+    </filter-mapping>
+    
     <servlet>
         <servlet-name>Login</servlet-name>
         <servlet-class>com.bartwal.Controller.PageController</servlet-class>
