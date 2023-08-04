@@ -108,7 +108,8 @@
         <div class="row">
             <div class="col-lg-4 col-md-4 col-sm-6">
                 <h3>About Us</h3>
-                <p class="abt-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                <p class="abt-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                    incididunt ut labore et dolore magna aliqua.</p>
             </div>
             <div class="col-lg-4 col-md-4 col-sm-6">
                 <h3>Contact Us</h3>
@@ -134,6 +135,20 @@
         </div>
     </div>
 </footer>
-
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#activity-Inactive').click(function() {
+            $.ajax({
+                url: '/Logout',
+                type: 'POST',
+                data : $(this).serialize(),
+                success: function (){
+                    window.location.href = '/index.jsp';
+                }
+            });
+        });
+    });
+</script>
 </body>
 </html>

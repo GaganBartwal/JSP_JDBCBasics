@@ -12,28 +12,25 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.Connection;
-import java.util.LinkedList;
 
 public class PageController extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        HttpSession session = request.getSession();
+        // Set the response headers to prevent caching
+        response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1
+        response.setHeader("Pragma", "no-cache"); // HTTP 1.0
+        response.setHeader("Vary", "Cookie");
+        response.setDateHeader("Expires", 0); // Proxies
 
-        if(session.getAttribute("email") != null && session.getAttribute("password") != null){
+        HttpSession session = request.getSession(true);
+
+        if(session.getAttribute("email") != null){
             response.getWriter().write("success");
         }else{
-            session = request.getSession(true);
 
             String email = request.getParameter("email");
             String password = request.getParameter("password");
-
-            if(email != null && password != null){
-                session.setAttribute("email", email);
-                session.setAttribute("password", password);
-                session.setMaxInactiveInterval(60);
-            }
-            System.out.println("email : " +email +" : password : " +password);
 
             Connection connection = new MySQLDataServices().mySQLConnection();
 
@@ -44,14 +41,15 @@ public class PageController extends HttpServlet {
             System.err.println(email + " : " +isUser);
 
             if(isUser){
+                session.setAttribute("email", email);
+                session.setMaxInactiveInterval(60);
+
                 response.getWriter().write("success");
             }else{
                 response.getWriter().write("error");
             }
 
         }
-
-
     }
 
 }

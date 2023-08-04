@@ -31,7 +31,7 @@ session="true" %>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/views/style.css">
     <title>Sign In or Sign Up</title>
 </head>
 
@@ -87,7 +87,7 @@ session="true" %>
             var response = xhr.responseText;
             // console.log(response);
             if(xhr.readyState === 4 && xhr.status === 200 && response === "success"){
-                window.location.href = 'HomePage.jsp';
+                window.location.href = '/views/HomePage.jsp';
             }else{
                 console.log("error here: ", response);
             }
@@ -107,7 +107,7 @@ session="true" %>
                 data : $(this).serialize(),
                 success : function (response) {
                     if(response === 'success'){
-                        window.location.href = 'HomePage.jsp';
+                        window.location.href = '/views/HomePage.jsp';
                     }else{
                         $('#error-message').html("Username or Password Incorrect/Not Exists");
                     }
@@ -125,7 +125,7 @@ session="true" %>
                        $('#email-error').html("Email already exists.");
                        alert("Email error");
                    }else{
-                       window.location.href = 'WelcomePage.jsp';
+                       window.location.href = '/views/WelcomePage.jsp';
                    }
                }
            })

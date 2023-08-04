@@ -11,7 +11,7 @@
 
     <filter-mapping>
         <filter-name>SessionFilter</filter-name>
-        <url-pattern>/HomePage</url-pattern>
+        <url-pattern>/*</url-pattern>
     </filter-mapping>
     
     <servlet>
@@ -34,4 +34,14 @@
         <url-pattern>/WelcomePage</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>LogoutSession</servlet-name>
+        <servlet-class>com.bartwal.Controller.LogoutController</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>LogoutSession</servlet-name>
+        <url-pattern>/Logout</url-pattern>
+    </servlet-mapping>
+    
 </web-app>
