@@ -43,6 +43,5 @@ public class SignUpPageController extends HttpServlet {
             System.err.println(firstname+" : " +lastname+" : " +gender+" : " +DOB+" : " +bio);
         }
 
-
     }
 }

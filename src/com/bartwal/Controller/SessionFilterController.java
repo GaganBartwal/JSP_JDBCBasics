@@ -22,12 +22,14 @@ public class SessionFilterController implements Filter {
         String path = httpServletRequest.getRequestURI().substring(httpServletRequest.getContextPath().length());
         String requestURI = httpServletRequest.getRequestURI();
 
-        if (session != null || requestURI.equals("/")) {
+        if (session != null || requestURI.equals("/") || requestURI.equals("/index.jsp")) {
 //            if(httpServletRequest.getParameter("email") == session.getAttribute("email")){
 //                session.invalidate();
 //            }else{
                 filterChain.doFilter(servletRequest, servletResponse);
 //            }
+        } else if(requestURI.equals("/Logout")){
+            filterChain.doFilter(servletRequest, servletResponse);
         } else {
             httpServletResponse.sendRedirect("/views/ErrorPage.jsp");
         }
